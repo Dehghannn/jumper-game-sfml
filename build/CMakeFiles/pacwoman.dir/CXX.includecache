@@ -1,0 +1,16 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/dehghannn/Documents/Code/Cplusplus/Pac-Woman/src/main.cpp
+iostream
+-
+typeinfo
+-
+SFML/System.hpp
+-
+
