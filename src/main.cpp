@@ -1,14 +1,34 @@
 #include <iostream>
 #include <typeinfo>
-#include <SFML/System.hpp>
+#include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 using namespace std;
 int main()
 {
-	cout << "Hello PacWoman" << endl;
-	sf::Time time;
-	time = sf::milliseconds(1500);
-	auto TimeSec = time.asSeconds();
-	cout << typeid(TimeSec).name() << endl
-		 << TimeSec << endl;
-	return EXIT_SUCCESS;
+  // Create the main window
+    sf::RenderWindow window(sf::VideoMode(800, 600), "SFML window");
+
+    sf::Font font;
+    sf::Text text("Hello SFML", font, 50);
+ 
+    // Start the game loop
+    while (window.isOpen())
+    {
+        // Process events
+        sf::Event event;
+        while (window.pollEvent(event))
+        {
+            // Close window: exit
+            if (event.type == sf::Event::Closed)
+                window.close();
+        }
+        // Clear screen
+        window.clear();
+ 
+        // Draw the string
+        window.draw(text);
+        // Update the window
+        window.display();
+    }
+    return EXIT_SUCCESS;
 }

@@ -6,11 +6,13 @@
 
 #IncludeRegexTransform: 
 
-/home/dehghannn/Documents/Code/Cplusplus/Pac-Woman/src/main.cpp
+/home/dehghannn/Documents/Code/Cpp/pac-woman-sfml/src/main.cpp
 iostream
 -
 typeinfo
 -
-SFML/System.hpp
+SFML/Graphics.hpp
+-
+SFML/Audio.hpp
 -
 
