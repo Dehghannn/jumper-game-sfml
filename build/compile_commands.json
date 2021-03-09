@@ -1,7 +1,7 @@
 [
 {
-  "directory": "/home/dehghannn/Documents/Code/Cpp/pac-woman-sfml/build",
-  "command": "/usr/bin/x86_64-linux-gnu-g++-7    -g   -std=c++11 -o CMakeFiles/pacwoman.dir/src/main.cpp.o -c /home/dehghannn/Documents/Code/Cpp/pac-woman-sfml/src/main.cpp",
-  "file": "/home/dehghannn/Documents/Code/Cpp/pac-woman-sfml/src/main.cpp"
+  "directory": "/home/dehghannn/Documents/Code/Cplusplus/Pac-Woman/build",
+  "command": "/usr/bin/x86_64-linux-gnu-g++-7    -g   -std=c++11 -o CMakeFiles/pacwoman.dir/src/main.cpp.o -c /home/dehghannn/Documents/Code/Cplusplus/Pac-Woman/src/main.cpp",
+  "file": "/home/dehghannn/Documents/Code/Cplusplus/Pac-Woman/src/main.cpp"
 }
 ]
