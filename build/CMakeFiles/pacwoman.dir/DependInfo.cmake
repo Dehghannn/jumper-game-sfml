@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/dehghannn/Documents/Code/Cpp/pac-woman-sfml/src/main.cpp" "/home/dehghannn/Documents/Code/Cpp/pac-woman-sfml/build/CMakeFiles/pacwoman.dir/src/main.cpp.o"
+  "/home/dehghannn/Documents/Code/Cplusplus/Pac-Woman/src/main.cpp" "/home/dehghannn/Documents/Code/Cplusplus/Pac-Woman/build/CMakeFiles/pacwoman.dir/src/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
