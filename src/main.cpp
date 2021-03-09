@@ -10,6 +10,25 @@ int main()
 
     sf::Font font;
     sf::Text text("Hello SFML", font, 50);
+
+    sf::Image image;
+    image.loadFromFile("assets/img.png");
+
+    sf::Texture texture;
+    texture.loadFromImage(image);
+
+    sf::Vector2<int> position(0, 0);
+
+
+    sf::Sprite sprite;
+    sprite.setTexture(texture);
+    sprite.setPosition(0,0);
+    sprite.setScale(0.2, 0.2);
+
+    sf::Sprite sprite2(texture);
+    sprite2.setPosition(100,100);
+    sprite2.setRotation(45);
+    sprite2.setScale(0.2, 0.2);
  
     // Start the game loop
     while (window.isOpen())
@@ -30,6 +49,10 @@ int main()
  
         // Draw the string
         window.draw(text);
+
+        window.draw(sprite);
+        window.draw(sprite2);
+
         // Update the window
         window.display();
     }
