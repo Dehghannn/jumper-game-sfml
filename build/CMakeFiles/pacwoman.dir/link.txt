@@ -1,1 +1,0 @@
-/usr/bin/x86_64-linux-gnu-g++-7  -g  -rdynamic CMakeFiles/pacwoman.dir/src/main.cpp.o  -o pacwoman -lsfml-system -lsfml-window -lsfml-graphics -lsfml-audio -lsfml-network 
