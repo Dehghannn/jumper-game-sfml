@@ -7,7 +7,7 @@ Jumper::Jumper()
     m_jumperSprite.setTexture(m_jumperTexture);
     m_jumperSprite.setScale(0.08f, 0.08f);
 
-    m_verticalAcceleration = 0.008;
+    m_verticalAcceleration = 0.005;
     m_verticalSpeed = -3;
 
     m_x = 400;
@@ -26,6 +26,10 @@ void Jumper::move()
         m_y = verticalCollisionY;
         m_verticalSpeed *= 0.7;
         m_verticalSpeed = - (m_verticalSpeed);
+    }
+    if(m_y < -100)
+    {
+        m_y = -100;
     }
     m_jumperSprite.setPosition(m_x, m_y);
 }
@@ -46,5 +50,5 @@ void Jumper::update()
 void Jumper::jump()
 {
     std::cout << "jumped" << std::endl;
-    setVerticalSpeed(-2);
+    setVerticalSpeed(-1.5);
 }

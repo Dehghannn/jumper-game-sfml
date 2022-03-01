@@ -23,6 +23,6 @@ class Jumper{
     float m_x;
     float m_y;
     float m_verticalAcceleration;
-    const int verticalCollisionY = 330;
+    const int verticalCollisionY = 390;
 
 };

@@ -12,7 +12,7 @@ Game::Game():m_window(sf::VideoMode(800, 600), "Jumper")
     m_groundTexture.setRepeated(true);
     m_groundSprite.setScale(1.11f, 0.823f);
     m_groundSprite.setTexture(m_groundTexture);
-    m_groundSprite.setPosition(0, m_window.getSize().y - 140);
+    m_groundSprite.setPosition(0, m_window.getSize().y - 80);
 
 }
 void Game::run()

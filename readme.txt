@@ -1,5 +1,5 @@
 Jumper
 ===============
-Author:	Morpheus
+Author:	Dehghannn
 ===============
 Packt SFML tutorial
