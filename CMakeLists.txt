@@ -12,7 +12,7 @@ add_definitions("-std=c++11")
 #tells the project to use the installed SFML include directory
 #include_directories(${SFML_INCLUDE_DIR})
 
-set(SRC src/main.cpp)
+set(SRC src/main.cpp src/game.cpp src/jumper.cpp)
 
 add_executable(jumper ${SRC})
 
