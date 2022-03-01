@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.6)
-project (pacwoman)
+project (jumper)
 
 #tells cmake where to find the configuration file for SFML
 #SET(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/modules/")
@@ -14,12 +14,12 @@ add_definitions("-std=c++11")
 
 set(SRC src/main.cpp)
 
-add_executable(pacwoman ${SRC})
+add_executable(jumper ${SRC})
 
 #links the libraries specified by find_package (and ensures correct link order)
-target_link_libraries( pacwoman sfml-system)
-target_link_libraries( pacwoman sfml-window)
-target_link_libraries( pacwoman sfml-graphics)
-target_link_libraries( pacwoman sfml-audio)
-target_link_libraries( pacwoman sfml-network)
+target_link_libraries( jumper sfml-system)
+target_link_libraries( jumper sfml-window)
+target_link_libraries( jumper sfml-graphics)
+target_link_libraries( jumper sfml-audio)
+target_link_libraries( jumper sfml-network)
 
