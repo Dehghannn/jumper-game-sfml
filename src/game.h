@@ -1,6 +1,8 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include "jumper.h"
+#include "defs.h"
+
 class Game{
 
     public:
@@ -26,6 +28,7 @@ class Game{
 
     sf::Sprite m_groundSprite;
     sf::Texture m_groundTexture;
+
 
     Jumper m_jumper;
 

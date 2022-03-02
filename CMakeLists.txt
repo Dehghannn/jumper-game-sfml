@@ -23,3 +23,5 @@ target_link_libraries( jumper sfml-graphics)
 target_link_libraries( jumper sfml-audio)
 target_link_libraries( jumper sfml-network)
 
+set(CMAKE_PREFIX_PATH ./build/)
+

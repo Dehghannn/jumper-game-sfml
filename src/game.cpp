@@ -1,14 +1,14 @@
 #include "game.h"
-Game::Game():m_window(sf::VideoMode(1920, 1080), "Jumper")
+Game::Game():m_window(sf::VideoMode(1280, 720), "Jumper")
 {
     m_gameStarted = 0; // game is not started by default!
 
     //init background
-    m_backGroundTexture.loadFromFile("../assets/background.jpg", sf::IntRect(0, 0, 1920, 1080));
+    m_backGroundTexture.loadFromFile(assets_path + "/background.jpg", sf::IntRect(0, 0, 1920, 1080));
     m_backGroundSprite.setTexture(m_backGroundTexture);
     m_backGroundSprite.setTextureRect(sf::IntRect(0, 0, m_window.getSize().x, m_window.getSize().y));
 
-    m_groundTexture.loadFromFile("../assets/ground.png");
+    m_groundTexture.loadFromFile(assets_path + "/ground.png");
     m_groundTexture.setSmooth(true);
     m_groundTexture.setRepeated(true);
     std::cout << "maximum ground texture size = " << m_groundTexture.getSize().x << " " << m_groundTexture.getSize().y << std::endl;

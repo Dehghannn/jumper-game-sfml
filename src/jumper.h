@@ -2,6 +2,7 @@
 #include <iostream>
 #include <numeric>
 #include <SFML/Graphics.hpp> 
+#include "defs.h"
 class Jumper{
     public:
     Jumper();

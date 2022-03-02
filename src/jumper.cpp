@@ -2,7 +2,7 @@
 sf::Texture Jumper::m_jumperTexture;
 Jumper::Jumper()
 {
-    m_jumperTexture.loadFromFile("../assets/jumper.png");
+    m_jumperTexture.loadFromFile(assets_path + "/jumper.png");
     m_jumperTexture.setSmooth(true);
     m_jumperSprite.setTexture(m_jumperTexture);
     m_jumperSprite.setScale(0.08f, 0.08f);
