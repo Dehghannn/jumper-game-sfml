@@ -1,28 +1,43 @@
 #pragma once
 #include <iostream>
+#include <numeric>
 #include <SFML/Graphics.hpp> 
 class Jumper{
     public:
     Jumper();
-    void draw(sf::RenderWindow * window);
+    void draw();
     void move();
-    void setVerticalDirection(bool newDirection);
     void setVerticalAcceleration(float newAcc);
     void setVerticalSpeed(float newVerticalSpeed);
     void update();
-    void jump();
+    void handleInputPress(sf::Keyboard::Key key);
+    void handleInputRelease(sf::Keyboard::Key key);
+    void setWindow(sf::RenderWindow* window);
+    void setSpeedScaleFactor(float newSSF);
 
     private:
     static sf::Texture m_jumperTexture;
     sf::Sprite m_jumperSprite;
 
     float m_verticalSpeed;
-    bool m_verticalDirection;
     float m_horizontalSpeed;
-    bool m_horizontalDirection;
     float m_x;
     float m_y;
     float m_verticalAcceleration;
-    const int verticalCollisionY = 390;
+    float m_speedScaleFactor = 1;
+    int verticalCollisionY;
+
+    int m_windowWidth = 800;
+    int m_windowHeight = 600;
+
+    bool m_leftIsPressed = false;
+    bool m_rightIsPressed = false;
+
+    void jump();
+    void moveRight();
+    void moveLeft();
+
+    sf::RenderWindow *m_window;
+
 
 };
