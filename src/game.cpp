@@ -23,8 +23,11 @@ Game::Game():m_window(sf::VideoMode(1280, 720), "Jumper")
 }
 void Game::run()
 {
+    sf::Clock clock;
+    sf::Time delta;
     while (m_window.isOpen())
     {
+        delta = clock.restart();
         sf::Event event;
         while (m_window.pollEvent(event))
         {
@@ -47,7 +50,7 @@ void Game::run()
         m_window.draw(m_backGroundSprite);
         m_window.draw(m_groundSprite);
         m_jumper.draw();
-        m_jumper.update();
+        m_jumper.update(delta);
         m_window.display();
     }
 }

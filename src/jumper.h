@@ -10,7 +10,7 @@ class Jumper{
     void move();
     void setVerticalAcceleration(float newAcc);
     void setVerticalSpeed(float newVerticalSpeed);
-    void update();
+    void update(sf::Time delta);
     void handleInputPress(sf::Keyboard::Key key);
     void handleInputRelease(sf::Keyboard::Key key);
     void setWindow(sf::RenderWindow* window);
@@ -33,6 +33,8 @@ class Jumper{
 
     bool m_leftIsPressed = false;
     bool m_rightIsPressed = false;
+
+    sf::Time m_delta = sf::Time::Zero;
 
     void jump();
     void moveRight();
