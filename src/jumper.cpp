@@ -55,12 +55,12 @@ void Jumper::move()
     {
         m_horizontalSpeed *= 0.97;
     }
-    if(m_x <= -50)
+    if(m_x - m_jumperSprite.getLocalBounds().width/2 <= 0)
     {
-        m_x = -50;
-    }else if(m_x >= (m_windowWidth - 50))
+        m_x = m_jumperSprite.getLocalBounds().width/2;
+    }else if(m_x + m_jumperSprite.getLocalBounds().width/2 >= m_windowWidth)
     {
-        m_x = m_windowWidth - 50;
+        m_x = m_windowWidth - m_jumperSprite.getLocalBounds().width/2;
     }
     m_jumperSprite.setPosition(m_x, m_y);
 }
