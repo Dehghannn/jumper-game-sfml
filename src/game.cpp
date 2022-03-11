@@ -52,5 +52,6 @@ void Game::run()
         m_jumper.draw();
         m_jumper.update(delta);
         m_window.display();
+        m_window.setFramerateLimit(60);
     }
 }

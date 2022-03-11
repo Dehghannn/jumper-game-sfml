@@ -14,7 +14,7 @@ Jumper::Jumper()
     std::cout << m_windowHeight << std::endl;
     verticalCollisionY = (m_windowHeight - 60 - m_jumperSprite.getLocalBounds().height/2);
 
-    m_verticalAcceleration = 10;
+    m_verticalAcceleration = 0.1;
     m_verticalSpeed = 0;
 
     m_horizontalSpeed = 0;
@@ -38,22 +38,22 @@ void Jumper::draw()
 }
 void Jumper::move()
 {
-    m_y += (m_verticalSpeed * m_speedScaleFactor) * m_delta.asSeconds();
+    m_y += (m_verticalSpeed * m_speedScaleFactor) * m_delta.asMilliseconds();
     if(m_y >= verticalCollisionY)
     {
         m_y = verticalCollisionY;
-        m_verticalSpeed *= 0.7;
+        m_verticalSpeed *= 0.8f;
         m_verticalSpeed = - (m_verticalSpeed);
     }
-    if(m_y < -100)
+    if(m_y < -100.f)
     {
-        m_y = -100;
+        m_y = -100.f;
     }
 
-    m_x += (m_horizontalSpeed * m_speedScaleFactor) * m_delta.asSeconds();
+    m_x += (m_horizontalSpeed * m_speedScaleFactor) * m_delta.asMilliseconds();
     if((m_horizontalSpeed > 0 && !m_rightIsPressed) || (m_horizontalSpeed < 0 && !m_leftIsPressed))
     {
-        m_horizontalSpeed *= 0.97;
+        m_horizontalSpeed *= 0.97f;
     }
     if(m_x - m_jumperSprite.getLocalBounds().width/2 <= 0)
     {
@@ -63,6 +63,7 @@ void Jumper::move()
         m_x = m_windowWidth - m_jumperSprite.getLocalBounds().width/2;
     }
     m_jumperSprite.setPosition(m_x, m_y);
+    m_verticalAcceleration = 0.01f * m_delta.asMilliseconds();
 }
 void Jumper::setVerticalAcceleration(float newVerticalAcc)
 {
@@ -87,8 +88,8 @@ void Jumper::update(sf::Time delta)
 }
 void Jumper::jump()
 {
-    std::cout << "jumped" << std::endl;
-    setVerticalSpeed(-2000);
+    std::cout << "last frame time : " << m_delta.asMicroseconds() << std::endl;
+    setVerticalSpeed(-2);
 }
 void Jumper::handleInputPress(sf::Keyboard::Key key)
 {
@@ -124,11 +125,11 @@ void Jumper::handleInputRelease(sf::Keyboard::Key key)
 }
 void Jumper::moveRight()
 {
-    m_horizontalSpeed = 900;
+    m_horizontalSpeed = 1.f;
     m_rightIsPressed = true;
 }
 void Jumper::moveLeft()
 {
-    m_horizontalSpeed = -900;
+    m_horizontalSpeed = -1.f;
     m_leftIsPressed = true;
 }
