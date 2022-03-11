@@ -7,7 +7,7 @@ class Jumper{
     public:
     Jumper();
     void draw();
-    void move();
+    void move(sf::Time delta);
     void setVerticalAcceleration(float newAcc);
     void setVerticalSpeed(float newVerticalSpeed);
     void update(sf::Time delta);

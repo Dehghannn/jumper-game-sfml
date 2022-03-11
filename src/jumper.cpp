@@ -36,9 +36,9 @@ void Jumper::draw()
 {
     m_window->draw(m_jumperSprite);
 }
-void Jumper::move()
+void Jumper::move(sf::Time delta)
 {
-    m_y += (m_verticalSpeed * m_speedScaleFactor) * m_delta.asMilliseconds();
+    m_y += (m_verticalSpeed * m_speedScaleFactor) * delta.asMilliseconds();
     if(m_y >= verticalCollisionY)
     {
         m_y = verticalCollisionY;
@@ -50,7 +50,7 @@ void Jumper::move()
         m_y = -100.f;
     }
 
-    m_x += (m_horizontalSpeed * m_speedScaleFactor) * m_delta.asMilliseconds();
+    m_x += (m_horizontalSpeed * m_speedScaleFactor) * delta.asMilliseconds();
     if((m_horizontalSpeed > 0 && !m_rightIsPressed) || (m_horizontalSpeed < 0 && !m_leftIsPressed))
     {
         m_horizontalSpeed *= 0.97f;
@@ -63,7 +63,7 @@ void Jumper::move()
         m_x = m_windowWidth - m_jumperSprite.getLocalBounds().width/2;
     }
     m_jumperSprite.setPosition(m_x, m_y);
-    m_verticalAcceleration = 0.01f * m_delta.asMilliseconds();
+    m_verticalAcceleration = 0.01f * delta.asMilliseconds();
 }
 void Jumper::setVerticalAcceleration(float newVerticalAcc)
 {
@@ -80,7 +80,7 @@ void Jumper::setVerticalSpeed(float newVerticalSpeed)
 }
 void Jumper::update(sf::Time delta)
 {
-    move();
+    move(delta);
     m_verticalSpeed += m_verticalAcceleration;
     m_delta = delta;
     //m_verticalSpeed *= delta.asSeconds();
