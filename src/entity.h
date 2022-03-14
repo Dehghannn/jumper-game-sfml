@@ -4,8 +4,6 @@
 
 class Entity
 {
-private:
-    /* data */
 public:
     Entity(/* args */);
     ~Entity();
@@ -20,8 +18,8 @@ public:
     void setWindow(sf::RenderWindow* window);
     void setSpeedScaleFactor(float newSSF);
 
-    private:
-    static sf::Texture m_entityTexture;
+    protected:
+    sf::Texture m_entityTexture;
     sf::Sprite m_entitySprite;
 
     float m_verticalSpeed;
@@ -37,6 +35,8 @@ public:
 
     bool m_leftIsPressed = false;
     bool m_rightIsPressed = false;
+    bool m_upIsPressed = false;
+    bool m_downIsPressed = false;
 
     sf::Time m_delta = sf::Time::Zero;
     sf::RenderWindow *m_window;
@@ -45,6 +45,8 @@ public:
     virtual void jump();
     virtual void moveRight();
     virtual void moveLeft();
+    virtual void moveUp();
+    virtual void moveDown();
 
 
 };

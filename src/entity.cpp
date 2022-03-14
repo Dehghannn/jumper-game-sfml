@@ -32,6 +32,11 @@ void Entity::move(sf::Time delta)
     {
         m_y = -100.f;
     }
+    if(!m_downIsPressed && !m_upIsPressed)
+    {
+        m_verticalSpeed += m_verticalAcceleration;
+    }
+        
 
     m_x += (m_horizontalSpeed * m_speedScaleFactor) * delta.asMilliseconds();
     if((m_horizontalSpeed > 0 && !m_rightIsPressed) || (m_horizontalSpeed < 0 && !m_leftIsPressed))
@@ -64,7 +69,6 @@ void Entity::setVerticalSpeed(float newVerticalSpeed)
 void Entity::update(sf::Time delta)
 {
     move(delta);
-    m_verticalSpeed += m_verticalAcceleration;
     m_delta = delta;
     //m_verticalSpeed *= delta.asSeconds();
     //m_horizontalSpeed *= delta.asSeconds();
@@ -88,6 +92,12 @@ void Entity::handleInputPress(sf::Keyboard::Key key)
     case sf::Keyboard::Left :
         moveLeft();
         break;
+    case sf::Keyboard::Up :
+        moveUp();
+        break;
+    case sf::Keyboard::Down :
+        moveDown();
+        break;
     default:
         break;
     }
@@ -102,6 +112,12 @@ void Entity::handleInputRelease(sf::Keyboard::Key key)
     case sf::Keyboard::Left :
         m_leftIsPressed = false;
         break;
+    case sf::Keyboard::Up : 
+        m_upIsPressed = false;
+        break;
+    case sf::Keyboard::Down : 
+        m_downIsPressed = false;
+        break;
     default:
         break;
     }
@@ -115,4 +131,14 @@ void Entity::moveLeft()
 {
     m_horizontalSpeed = -1.f;
     m_leftIsPressed = true;
+}
+void Entity::moveUp()
+{
+    m_verticalSpeed = -1.f;
+    m_upIsPressed = true;
+}
+void Entity::moveDown()
+{
+    m_verticalSpeed = 1.f;
+    m_downIsPressed = true;
 }
