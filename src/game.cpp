@@ -17,8 +17,17 @@ Game::Game():m_window(sf::VideoMode(1280, 720), "Jumper")
     m_groundSprite.setTexture(m_groundTexture);
     m_groundSprite.setPosition(0, m_window.getSize().y - 80);
 
-    m_jumper.setWindow(&m_window);
-    m_jumper.setSpeedScaleFactor(m_window.getSize().x / 800);
+
+    //creating game states: 
+    std::shared_ptr<GameState>  playState = std::make_shared<PlayState>();
+    playState->setWindow(&m_window);
+    playState->setSpeedScaleFactor(m_window.getSize().x / 800);
+
+    m_gameStates[0] = playState;
+    m_currentStatePtr = playState; ///set current state to play state
+
+    // m_currentStatePtr.setWindow(&m_window);
+    // m_currentStatePtr.setSpeedScaleFactor();
 
 }
 void Game::run()
@@ -38,19 +47,19 @@ void Game::run()
             }
             if(event.type == sf::Event::EventType::KeyPressed)
             {
-                m_jumper.handleInputPress(event.key.code);
+                m_currentStatePtr->handleInputPress(event.key.code);
             }
             if(event.type == sf::Event::EventType::KeyReleased)
             {
-                m_jumper.handleInputRelease(event.key.code);
+                m_currentStatePtr->handleInputRelease(event.key.code);
             }
         }
         
         m_window.clear();
         m_window.draw(m_backGroundSprite);
         m_window.draw(m_groundSprite);
-        m_jumper.draw();
-        m_jumper.update(delta);
+        m_currentStatePtr->update(delta);
+        m_currentStatePtr->draw();
         m_window.display();
         m_window.setFramerateLimit(60);
     }

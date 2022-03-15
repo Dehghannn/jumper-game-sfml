@@ -1,6 +1,8 @@
 #pragma once
+#include <memory>
 #include <SFML/Graphics.hpp>
-#include "jumper.h"
+#include "gamestate.h"
+#include "playstate.h"
 #include "defs.h"
 
 class Game{
@@ -30,6 +32,7 @@ class Game{
     sf::Texture m_groundTexture;
 
 
-    Jumper m_jumper;
+    std::array<std::shared_ptr<GameState>, 4> m_gameStates; /// four game states in this game
+    std::shared_ptr<GameState> m_currentStatePtr; /// pointer to the current state of the game
 
 };
