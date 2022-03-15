@@ -2,4 +2,4 @@ Jumper
 ===============
 Author:	Dehghannn
 ===============
-Packt SFML tutorial
+Trying out SFML!
