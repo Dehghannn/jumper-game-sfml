@@ -23,8 +23,13 @@ Game::Game():m_window(sf::VideoMode(1280, 720), "Jumper")
     playState->setWindow(&m_window);
     playState->setSpeedScaleFactor(m_window.getSize().x / 800);
 
+    std::shared_ptr<GameState> startState = std::make_shared<StartState>();
+    startState->setWindow(&m_window);
+    startState->setSpeedScaleFactor(m_window.getSize().x / 800);
+
     m_gameStates[0] = playState;
-    m_currentStatePtr = playState; ///set current state to play state
+    m_gameStates[1] = startState;
+    m_currentStatePtr = startState; ///set current state to play state
 
     // m_currentStatePtr.setWindow(&m_window);
     // m_currentStatePtr.setSpeedScaleFactor();

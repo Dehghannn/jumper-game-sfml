@@ -3,6 +3,7 @@
 #include <SFML/Graphics.hpp>
 #include "gamestate.h"
 #include "playstate.h"
+#include "startstate.h"
 #include "defs.h"
 
 class Game{
