@@ -1,6 +1,6 @@
 #include "playstate.h"
 
-PlayState::PlayState(/* args */)
+PlayState::PlayState(Game* game): GameState(game)
 {
 
     //creating entities

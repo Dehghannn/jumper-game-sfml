@@ -1,6 +1,7 @@
 #include "gamestate.h"
-GameState::GameState(/* args */)
+GameState::GameState(Game* game)
 {
+    this->game = game;
 }
 
 GameState::~GameState()

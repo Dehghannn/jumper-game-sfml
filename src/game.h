@@ -10,6 +10,8 @@ class Game{
 
     public:
     Game();
+
+    friend class GameState;
    // ~Game();
 
     enum State{
@@ -21,6 +23,8 @@ class Game{
     void setBackGround(sf::Texture newBackGround);
 
     void run();
+
+    void changeGameState(State state);
 
     private:
     sf::RenderWindow m_window;

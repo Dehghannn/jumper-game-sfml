@@ -1,6 +1,6 @@
 #include "startstate.h"
 
-StartState::StartState(/* args */)
+StartState::StartState(Game* game): GameState(game)
 {
     //load font here
     m_font.loadFromFile("/home/dehghannn/.fonts/SourceCodePro-Black.otf");
@@ -8,6 +8,7 @@ StartState::StartState(/* args */)
     m_text.setString("Press any button to start");
     m_text.setFillColor(sf::Color::White);
     m_text.setCharacterSize(32);
+    startTextAnimation();
 }
 
 StartState::~StartState()
@@ -23,8 +24,12 @@ void StartState::draw()
     for(auto entity : m_entities)
     {
         entity->draw();
+        
     }
-    m_window->draw(m_text);
+    if(m_showText)
+    {
+        m_window->draw(m_text);
+    }
 }
 void StartState::update(sf::Time delta)
 {
@@ -33,11 +38,20 @@ void StartState::update(sf::Time delta)
     {
         entity->update(delta);
     }
+    m_TextAnimationTime = m_clock.getElapsedTime();
+    if(m_TextAnimationTime.asMilliseconds() > 500)
+    {
+        m_showText = !m_showText;
+        m_clock.restart();
+        std::cout << m_showText;
+    }
+
 }
 void StartState::handleInputPress(sf::Keyboard::Key key)
 {
     //temp 
     //change game state here
+    game->changeGameState(Game::State::Started);
 }
 void StartState::handleInputRelease(sf::Keyboard::Key key)
 {
@@ -60,5 +74,13 @@ void StartState::setWindow(sf::RenderWindow* window)
     for(auto entity : m_entities)
     {
         entity->setWindow(window);
+    }
+}
+void StartState::startTextAnimation()
+{
+    if(m_isStarted == false)
+    {
+        m_clock.restart();
+        m_isStarted = true;
     }
 }

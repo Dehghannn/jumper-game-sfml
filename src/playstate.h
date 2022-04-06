@@ -4,6 +4,7 @@
 #include "gamestate.h"
 #include "entity.h"
 #include "jumper.h"
+class Game;
 /**
  * @brief PlayState is a state of the game in wich player(s) actually are playing the game
  * 
@@ -13,7 +14,7 @@ class PlayState : public GameState
 private:
     /* data */
 public:
-    PlayState(/* args */);
+    PlayState(Game* game);
     ~PlayState();
     void draw() override;
     void update(sf::Time delta) override;

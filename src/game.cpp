@@ -19,11 +19,11 @@ Game::Game():m_window(sf::VideoMode(1280, 720), "Jumper")
 
 
     //creating game states: 
-    std::shared_ptr<GameState>  playState = std::make_shared<PlayState>();
+    std::shared_ptr<GameState>  playState = std::make_shared<PlayState>(this);
     playState->setWindow(&m_window);
     playState->setSpeedScaleFactor(m_window.getSize().x / 800);
 
-    std::shared_ptr<GameState> startState = std::make_shared<StartState>();
+    std::shared_ptr<GameState> startState = std::make_shared<StartState>(this);
     startState->setWindow(&m_window);
     startState->setSpeedScaleFactor(m_window.getSize().x / 800);
 
@@ -67,5 +67,17 @@ void Game::run()
         m_currentStatePtr->draw();
         m_window.display();
         m_window.setFramerateLimit(60);
+    }
+}
+void Game::changeGameState(State state)
+{
+    switch (state)
+    {
+    case Started:
+        m_currentStatePtr = m_gameStates[0];
+        break;
+    
+    default:
+        break;
     }
 }
