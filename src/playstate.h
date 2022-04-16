@@ -4,6 +4,7 @@
 #include "gamestate.h"
 #include "entity.h"
 #include "jumper.h"
+#include "trophy.h"
 class Game;
 /**
  * @brief PlayState is a state of the game in wich player(s) actually are playing the game
@@ -26,5 +27,11 @@ public:
 
 private:
     std::vector<std::shared_ptr<Entity> > m_entities; /// all the entities in this state
+    sf::Text m_scoreText;
+    sf::Text m_timeText;
+    sf::Font m_font;
+    int m_score = 23;
+    sf::Clock m_gameClock;
+    int m_remainingTime = 60;
 };
 

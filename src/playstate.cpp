@@ -7,8 +7,22 @@ PlayState::PlayState(Game* game): GameState(game)
     std::shared_ptr<Entity> jumper = std::make_shared<Jumper>();
     m_entities.push_back(jumper);
 
-    std::shared_ptr<Entity> jumper2 = std::make_shared<Jumper>();
-    m_entities.push_back(jumper2);
+    // std::shared_ptr<Entity> jumper2 = std::make_shared<Jumper>();
+    // m_entities.push_back(jumper2);
+
+    std::shared_ptr<Entity> trophy = std::make_shared<Trophy>();
+    m_entities.push_back(trophy);
+
+    m_font.loadFromFile("/home/dehghannn/.fonts/SourceCodePro-Black.otf");
+
+    m_scoreText.setFont(m_font);
+    m_timeText.setFont(m_font);
+    m_scoreText.setString(std::to_string(m_score));
+    m_timeText.setString(std::to_string(m_remainingTime));
+    m_scoreText.setFillColor(sf::Color::White);
+    m_timeText.setFillColor(sf::Color::White);
+    m_scoreText.setCharacterSize(55);
+    m_timeText.setCharacterSize(72);
     
 }
 
@@ -26,6 +40,8 @@ void PlayState::draw()
     {
         entity->draw();
     }
+    m_window->draw(m_scoreText);
+    m_window->draw(m_timeText);
 }
 void PlayState::update(sf::Time delta)
 {
@@ -33,6 +49,18 @@ void PlayState::update(sf::Time delta)
     for(auto entity : m_entities)
     {
         entity->update(delta);
+    }
+    sf::Time elapsed = m_gameClock.getElapsedTime();
+    if(elapsed.asMilliseconds() > 1000)
+    {
+        m_remainingTime--;
+        m_gameClock.restart();
+        m_timeText.setString(std::to_string(m_remainingTime));
+    }
+    m_scoreText.setString(std::to_string(m_score));
+    if(m_remainingTime <= 10)
+    {
+        m_timeText.setFillColor(sf::Color::Red);
     }
 }
 void PlayState::handleInputPress(sf::Keyboard::Key key)
@@ -60,4 +88,6 @@ void PlayState::setWindow(sf::RenderWindow* window)
     {
         entity->setWindow(window);
     }
+    m_timeText.setPosition(m_window->getSize().x/2 - m_timeText.getLocalBounds().width / 2, 5);
+    m_scoreText.setPosition(20, m_timeText.getPosition().y + m_timeText.getLocalBounds().height - m_scoreText.getLocalBounds().height);
 }
