@@ -17,6 +17,7 @@ public:
     void setVerticalSpeed(float newVerticalSpeed);
     void setWindow(sf::RenderWindow* window);
     void setSpeedScaleFactor(float newSSF);
+    void setPosition(int x, int y);
 
     protected:
     sf::Texture m_entityTexture;

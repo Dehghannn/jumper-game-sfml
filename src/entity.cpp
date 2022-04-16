@@ -142,3 +142,7 @@ void Entity::moveDown()
     m_verticalSpeed = 1.f;
     m_downIsPressed = true;
 }
+void Entity::setPosition(int x, int y)
+{
+    m_entitySprite.setPosition(x, y);
+}
