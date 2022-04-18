@@ -19,16 +19,20 @@ Game::Game():m_window(sf::VideoMode(1280, 720), "Jumper")
 
 
     //creating game states: 
-    std::shared_ptr<GameState>  playState = std::make_shared<PlayState>(this);
+    std::shared_ptr<GameState>  playState = std::make_shared<PlayState>(this, &m_window);
     playState->setWindow(&m_window);
     playState->setSpeedScaleFactor(m_window.getSize().x / 800);
 
-    std::shared_ptr<GameState> startState = std::make_shared<StartState>(this);
+    std::shared_ptr<GameState> startState = std::make_shared<StartState>(this, &m_window);
     startState->setWindow(&m_window);
     startState->setSpeedScaleFactor(m_window.getSize().x / 800);
 
+    std::shared_ptr<GameState> overState = std::make_shared<OverState>(this, &m_window);
+    overState->setSpeedScaleFactor(m_window.getSize().x / 800);
+
     m_gameStates[0] = playState;
     m_gameStates[1] = startState;
+    m_gameStates[2] = overState;
     m_currentStatePtr = startState; ///set current state to play state
 
     // m_currentStatePtr.setWindow(&m_window);
@@ -76,8 +80,23 @@ void Game::changeGameState(State state)
     case Started:
         m_currentStatePtr = m_gameStates[0];
         break;
-    
+    case Notstarted:
+        m_currentStatePtr = m_gameStates[1];
+        break;
+    case Over:
+        m_currentStatePtr = m_gameStates[2];
+        std::cout << "game state changed to Over" << std::endl;
+        break;
     default:
         break;
     }
+}
+
+const int Game::getScore() const
+{
+    return m_score;
+}
+void Game::setScore(const int newScore)
+{
+    this->m_score = newScore;
 }

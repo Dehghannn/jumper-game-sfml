@@ -1,7 +1,8 @@
 #include "gamestate.h"
-GameState::GameState(Game* game)
+GameState::GameState(Game* game, sf::RenderWindow* window)
 {
     this->game = game;
+    this->m_window = window;
 }
 
 GameState::~GameState()

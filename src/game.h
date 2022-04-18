@@ -4,6 +4,7 @@
 #include "gamestate.h"
 #include "playstate.h"
 #include "startstate.h"
+#include "overstate.h"
 #include "defs.h"
 
 class Game{
@@ -17,6 +18,7 @@ class Game{
     enum State{
         Notstarted,
         Started,
+        Over,
         count
     };
     sf::Texture& backGround() const;
@@ -24,10 +26,15 @@ class Game{
 
     void run();
 
+    const int getScore() const;
+    void setScore(const int newScore);
+
     void changeGameState(State state);
 
     private:
     sf::RenderWindow m_window;
+
+    int m_score = 0;
 
     bool m_gameStarted;
     sf::Texture m_backGroundTexture;

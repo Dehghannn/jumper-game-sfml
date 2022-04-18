@@ -11,7 +11,7 @@ class StartState: public GameState
 private:
     /* data */
 public:
-    StartState(Game* game);
+    StartState(Game* game, sf::RenderWindow* window);
     ~StartState();
     void draw() override;
     void update(sf::Time delta) override;

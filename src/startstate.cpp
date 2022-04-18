@@ -1,6 +1,6 @@
 #include "startstate.h"
 
-StartState::StartState(Game* game): GameState(game)
+StartState::StartState(Game* game, sf::RenderWindow* window): GameState(game, window)
 {
     //load font here
     m_font.loadFromFile("/home/dehghannn/.fonts/SourceCodePro-Black.otf");
@@ -8,6 +8,7 @@ StartState::StartState(Game* game): GameState(game)
     m_text.setString("Press any button to start");
     m_text.setFillColor(sf::Color::White);
     m_text.setCharacterSize(32);
+    m_text.setPosition(m_window->getSize().x / 3, m_window->getSize().y * 2 / 3);
     startTextAnimation();
 }
 
@@ -43,7 +44,7 @@ void StartState::update(sf::Time delta)
     {
         m_showText = !m_showText;
         m_clock.restart();
-        std::cout << m_showText;
+        //std::cout << m_showText;
     }
 
 }
@@ -70,7 +71,6 @@ void StartState::setWindow(sf::RenderWindow* window)
 {
     m_window = window;
 
-    m_text.setPosition(m_window->getSize().x / 3, m_window->getSize().y * 2 / 3);
     for(auto entity : m_entities)
     {
         entity->setWindow(window);

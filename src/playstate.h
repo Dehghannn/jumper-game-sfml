@@ -5,6 +5,7 @@
 #include "entity.h"
 #include "jumper.h"
 #include "trophy.h"
+#include "game.h"
 class Game;
 /**
  * @brief PlayState is a state of the game in wich player(s) actually are playing the game
@@ -15,7 +16,7 @@ class PlayState : public GameState
 private:
     /* data */
 public:
-    PlayState(Game* game);
+    PlayState(Game* game, sf::RenderWindow* window);
     ~PlayState();
     void draw() override;
     void update(sf::Time delta) override;
@@ -32,6 +33,6 @@ private:
     sf::Font m_font;
     int m_score = 23;
     sf::Clock m_gameClock;
-    int m_remainingTime = 60;
+    int m_remainingTime = 5;
 };
 

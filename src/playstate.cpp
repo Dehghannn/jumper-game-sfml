@@ -1,6 +1,6 @@
 #include "playstate.h"
 
-PlayState::PlayState(Game* game): GameState(game)
+PlayState::PlayState(Game* game, sf::RenderWindow* window): GameState(game, window)
 {
 
     //creating entities
@@ -23,6 +23,9 @@ PlayState::PlayState(Game* game): GameState(game)
     m_timeText.setFillColor(sf::Color::White);
     m_scoreText.setCharacterSize(55);
     m_timeText.setCharacterSize(72);
+
+    m_timeText.setPosition(m_window->getSize().x/2 - m_timeText.getLocalBounds().width / 2, 5);
+    m_scoreText.setPosition(20, m_timeText.getPosition().y + m_timeText.getLocalBounds().height - m_scoreText.getLocalBounds().height);
     
 }
 
@@ -61,6 +64,12 @@ void PlayState::update(sf::Time delta)
     if(m_remainingTime <= 10)
     {
         m_timeText.setFillColor(sf::Color::Red);
+        if(m_remainingTime == 0)
+        {
+            //the game is set over in here
+            game->setScore(m_score);
+            this->game->changeGameState(Game::State::Over);
+        } 
     }
 }
 void PlayState::handleInputPress(sf::Keyboard::Key key)
@@ -88,6 +97,5 @@ void PlayState::setWindow(sf::RenderWindow* window)
     {
         entity->setWindow(window);
     }
-    m_timeText.setPosition(m_window->getSize().x/2 - m_timeText.getLocalBounds().width / 2, 5);
-    m_scoreText.setPosition(20, m_timeText.getPosition().y + m_timeText.getLocalBounds().height - m_scoreText.getLocalBounds().height);
+
 }

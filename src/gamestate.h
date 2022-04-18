@@ -11,7 +11,7 @@ class GameState
 private:
     /* data */
 public:
-    GameState(Game* game);
+    GameState(Game* game, sf::RenderWindow* window);
     ~GameState();
     virtual void draw() = 0;
     virtual void update(sf::Time delta) = 0;
