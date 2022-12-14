@@ -2,6 +2,9 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
 
+/**
+ * This class is an interface for all entities in the game
+**/
 class Entity
 {
 public:
